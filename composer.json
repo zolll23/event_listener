@@ -1,6 +1,13 @@
 {
   "name": "vpa/event_listener",
   "description": "The event listener & generator to implement the event model of communication between objects",
+  "keywords": [
+    "php",
+    "event",
+    "listener",
+    "subscribe",
+    "events generator"
+  ],
   "license": "gnu",
   "homepage": "https://github.com/zolll23/event_listener",
   "authors": [
@@ -10,7 +17,7 @@
     }
   ],
   "require": {
-    "php": ">=7.4 || ~8.0.0"
+    "php": ">=7.4"
   },
   "require-dev": {
     "phpunit/phpunit": "^9.5",
