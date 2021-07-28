@@ -26,12 +26,12 @@
   },
   "autoload": {
     "psr-4": {
-      "vpa\\event_listener": "src/VPA"
+      "vpa\\event_listener\\": "src/VPA"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "vpa\\event_listener": "tests"
+      "vpa\\event_listener\\": "tests"
     }
   }
 }
