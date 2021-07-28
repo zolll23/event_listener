@@ -1,9 +1,10 @@
 <?php
 //error_reporting(E_ALL);
 //ini_set('display_errors',1);
+require_once('../VPA/Eventer.php');
 
 use VPA\Eventer;
-require_once('VPA/Eventer.php');
+
 echo "Events lib\n\n";
 
 Eventer::subscribe('Numerator_generate', [Operator::class, 'sum']);
