@@ -1,36 +1,57 @@
 <?php
+declare(strict_types=1);
 
 namespace VPA;
 
+/**
+ * Class Eventer
+ * @package VPA
+ */
 class Eventer
 {
+    /** @psalm-var array<array> self::$events */
     static private array $events = [];
 
-    static function make_event(string $event_name, $generator, $data)
+    /**
+     * Send the event to listeners for current class
+     * @param string $event_name
+     * @param object $generator
+     * @param mixed $data
+     */
+    static function make_event(string $event_name, object $generator, $data): void
     {
         if (isset(self::$events[$event_name])) {
             foreach (self::$events[$event_name] as $method) {
+                assert(is_array($method));
                 call_user_func(array($method['classname'], $method['method']), $data, $event_name, $generator);
             }
         }
     }
 
-    static function send(string $event, $generator = null, $data = null)
+    /**
+     * Send event to all listeners
+     * @param string $event
+     * @param object $generator
+     * @param mixed $data
+     */
+    static function send(string $event, object $generator, $data = null): void
     {
         if (!$data) $data = $generator;
-
         self::make_event($event, $generator, $data);
-
-        if (!is_object($generator)) return;
 
         $classes = class_parents($generator);
         $classes[] = get_class($generator);
         foreach ($classes as $class) {
-            $event_name = $class . '_' . $event;
+            $event_name = $class . '::' . $event;
             self::make_event($event_name, $generator, $data);
         }
     }
 
+    /**
+     * Add a listener to list of subscribers
+     * @param string $event_name
+     * @param array $method
+     */
     static public function subscribe(string $event_name, array $method): void
     {
         $key = implode("::", $method);
@@ -40,13 +61,21 @@ class Eventer
         ];
     }
 
-    static public function unsubscribe(string $event_name, array $method)
+    /**
+     * Remove a listener from list of subscribers
+     * @param string $event_name
+     * @param array $method
+     */
+    static public function unsubscribe(string $event_name, array $method): void
     {
         $key = implode("::", $method);
         unset(self::$events[$event_name][$key]);
     }
 
-    static function clean_subscribes()
+    /**
+     * Remove all listeners
+     */
+    static function clean_subscribes(): void
     {
         self::$events = [];
     }

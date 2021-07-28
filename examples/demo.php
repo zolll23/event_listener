@@ -1,14 +1,15 @@
 <?php
 //error_reporting(E_ALL);
 //ini_set('display_errors',1);
-require_once('../VPA/Eventer.php');
+
+require_once(__DIR__.'/../src/VPA/Eventer.php');
 
 use VPA\Eventer;
 
 echo "Events lib\n\n";
 
-Eventer::subscribe('Numerator_generate', [Operator::class, 'sum']);
-Eventer::subscribe('Digits_generate', [Operator::class, 'sub']);
+Eventer::subscribe('Numerator::generate', [Operator::class, 'sum']);
+Eventer::subscribe('Digits::generate', [Operator::class, 'sub']);
 
 $n = new Numerator();
 $n->generate();
@@ -38,11 +39,11 @@ class Operator
         echo "\n";
     }
 
-    static function sub($data)
+    static function sub($data, $event_name)
     {
         $a = $data[0];
         $b = $data[1];
-        echo "Sub=" . ($a - $b);
+        echo "Sub ($event_name)=" . ($a - $b);
         echo "\n";
     }
 }
