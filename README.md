@@ -15,13 +15,13 @@ require_once('VPA/Eventer.php');
 or if you use composer, add next lines:
 ```
 "repositories": [
-    {
-        "type": "git",
-        "url": "https://github.com/zolll23/event_listener",
-    }
+{
+    "type": "git",
+    "url": "https://github.com/zolll23/event_listener"
+}
 ],
 "require": {
-    "zolll23/event_listener" : "dev-master"
+    "vpa/event_listener" : "dev-main"
 }
 ```
 
@@ -93,3 +93,6 @@ Sum (Numerator::generate)=196
 ```
 Call of method "generate"  generated 2 events that were caught and 
 served by the corresponding handlers
+
+Link to this demo: 
+https://github.com/zolll23/event_listener/blob/main/examples/demo.php
