@@ -13,7 +13,8 @@
   "authors": [
     {
       "name": "Andrey Pakhomov",
-      "email": "andrey.pahomov@gmail.com"
+      "email": "andrey.pahomov@gmail.com",
+      "role": "Developer"
     }
   ],
   "require": {
@@ -25,7 +26,7 @@
   },
   "autoload": {
     "psr-4": {
-      "VPA\\": "src/"
+      "vpa\\event_listener": "src/VPA"
     }
   },
   "autoload-dev": {
