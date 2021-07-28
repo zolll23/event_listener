@@ -1,0 +1,29 @@
+{
+  "name": "vpa/event_listener",
+  "description": "The event listener & generator to implement the event model of communication between objects",
+  "license": "gnu",
+  "homepage": "https://github.com/zolll23/event_listener",
+  "authors": [
+    {
+      "name": "Andrey Pakhomov",
+      "email": "andrey.pahomov@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.4 || ~8.0.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.5",
+    "vimeo/psalm": "^4.8"
+  },
+  "autoload": {
+    "psr-4": {
+      "VPA\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "VPA\\": "tests/"
+    }
+  }
+}
