@@ -36,7 +36,6 @@ class Eventer
      */
     static function send(string $event, object $generator, $data = null): void
     {
-        if (!$data) $data = $generator;
         self::make_event($event, $generator, $data);
 
         $classes = class_parents($generator);
@@ -54,7 +53,7 @@ class Eventer
      */
     static public function subscribe(string $event_name, array $method): void
     {
-        $key = implode("::", $method);
+        $key = self::getKey($method);
         self::$events[$event_name][$key] = [
             'classname' => $method[0],
             'method' => $method[1]
@@ -68,16 +67,26 @@ class Eventer
      */
     static public function unsubscribe(string $event_name, array $method): void
     {
-        $key = implode("::", $method);
+        $key = self::getKey($method);
         unset(self::$events[$event_name][$key]);
+    }
+
+    static private function getKey(array $method): string
+    {
+        return implode("::", $method);
     }
 
     /**
      * Remove all listeners
      */
-    static function clean_subscribes(): void
+    static function cleanSubscribes(): void
     {
         self::$events = [];
+    }
+
+    static function getSubscribes(): array
+    {
+        return self::$events;
     }
 }
 
