@@ -1,1 +1,0 @@
-{"version":1,"defects":{"Tests\\EventerTest::testSubscribeEvent":4,"Tests\\EventerTest::testListenCurrentClassEvent":4},"times":{"Tests\\EventerTest::testSubscribeEvent":0.002,"Tests\\EventerTest::testListenCurrentClassEvent":0,"Tests\\EventerTest::testListenParentClassEvent":0}}
