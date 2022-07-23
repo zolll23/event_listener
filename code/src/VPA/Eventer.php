@@ -18,7 +18,7 @@ class Eventer
      * @param object $generator
      * @param mixed $data
      */
-    static function make_event(string $event_name, object $generator, $data): void
+    static function make_event(string $event_name, object $generator, mixed $data): void
     {
         if (isset(self::$events[$event_name])) {
             foreach (self::$events[$event_name] as $method) {
